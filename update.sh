@@ -3,9 +3,9 @@
 basedir=$(dirname $0)
 
 echo "Updating drox"
-git pull
+git pull --quiet
 echo "Check git submodule"
-git submodule update --recursive --init
+git submodule update --recursive --init --quiet
 
 if [ -f ~/.vimrc ] ; then 
     echo Backing up .vimrc
