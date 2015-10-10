@@ -1,19 +1,11 @@
 #!/bin/bash
 
-log() {
-    echo $1
-}
-
 basedir=$(dirname $0)
 
-pushd $basedir > /dev/null
+echo "Updating drox"
+git pull
+echo "Check git submodule"
 
-log Updating
-git pull 
-
-log "check vim"
-log "check git"
-log "check bash"
-
-
-popd > /dev/null
+echo "check vim"
+echo "check git"
+echo "check bash"
