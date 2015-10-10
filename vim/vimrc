@@ -1,3 +1,6 @@
+set nocompatible
+set modeline
+filetype plugin on
 set background=dark
 set hlsearch
 set autoindent

@@ -1,4 +1,6 @@
 #!/bin/bash
 
-
-echo "I am in your installz"
+if [ -d ~/.drox ] ; then
+git clone https://github.com/oxo42/drox.git ~/.drox
+cd ~/.drox
+./update.sh
