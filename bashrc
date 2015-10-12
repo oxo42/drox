@@ -7,7 +7,7 @@ if [ -f ~/.drox/bash-git-prompt/gitprompt.sh ] ; then
     source ~/.drox/bash-git-prompt/gitprompt.sh
 fi
 
-if hash thefuck ; then
+if hash thefuck 2> /dev/null ; then
     eval "$(thefuck --alias)"
 else
     alias fuck="install_thefuck"
