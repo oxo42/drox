@@ -19,6 +19,8 @@ install_thefuck() {
     echo
     if test "$REPLY" = "y" -o "$REPLY" = "Y"; then
         wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
+        unalias fuck
+        eval "$(thefuck --alias)"
     else
         echo "Cancelled by user"
     fi
