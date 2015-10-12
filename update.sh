@@ -2,7 +2,7 @@
 
 basedir=$(dirname $0)
 
-echo "Updating drox"
+echo "Starting drox update at $(date)"
 git pull
 echo "Check git submodule"
 git submodule update --recursive --init
@@ -28,3 +28,5 @@ if ! [ -L ~/.gitconfig ] ; then
     echo Symlinking .gitconfig
     ln -s ~/.drox/gitconfig ~/.gitconfig
 fi
+
+echo "Finished at $(date)"
