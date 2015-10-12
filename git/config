@@ -1,9 +1,0 @@
-# vim: set syntax=gitconfig:
-
-[user]
-    name = John Oxley
-    email = john.oxley@gmail.com
-[push]
-    default = simple
-[alias]
-    s = status
