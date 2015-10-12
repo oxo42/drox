@@ -13,7 +13,7 @@ else
     alias fuck="install_thefuck"
 fi
 
-install_fuck() {
+install_thefuck() {
     echo -n "Do you want to install thefuck? [N/y] "
     read -N 1 REPLY
     echo
@@ -23,3 +23,4 @@ install_fuck() {
         echo "Cancelled by user"
     fi
 }
+
