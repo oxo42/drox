@@ -28,4 +28,3 @@ fi
 
 
 I do the install in my `.profile` because I want to push it out over puppet.  That way on my first login, my profile gets set up.
-
