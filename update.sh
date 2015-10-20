@@ -7,9 +7,13 @@ git pull
 echo "Check git submodule"
 git submodule update --recursive --init
 
-if [ -f ~/.vimrc ] ; then 
+if [[ -f ~/.vimrc && ! -L ~/.vimrc ]] ; then 
     echo Backing up .vimrc
     mv ~/.vimrc ~/.vimrc.bak 
+fi
+if [[ ! -L ~/.vimrc ]] ; then 
+    echo Symlinking .vimrc
+    ln -s ~/.drox/dot.vimrc ~/.vimrc
 fi
 if [[ -d ~/.vim  && ! -L ~/.vim ]] ; then 
     echo Backing up .vim
