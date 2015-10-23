@@ -3,6 +3,8 @@
 # Shared git config?  Common vim config?
 # MADNESS I TELL YOU MADNESS
 
+Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+
 cd $HOME
 if(Test-Path drox) {
     cd drox
@@ -16,3 +18,5 @@ if(Test-Path drox) {
 }
 
 ./Update-Drox.ps1
+
+Pop-Location
