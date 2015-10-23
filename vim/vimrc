@@ -14,12 +14,21 @@ Plugin 'VundleVim/Vundle.vim'
 " https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
 
+" https://github.com/altercation/vim-colors-solarized.git
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 set modeline
-set background=dark
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
 set hlsearch
 set autoindent
 
@@ -40,3 +49,5 @@ set smarttab
 set expandtab
 
 syntax on
+
+colorscheme solarized
