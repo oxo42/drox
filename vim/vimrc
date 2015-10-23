@@ -15,6 +15,10 @@ Plugin 'tpope/vim-fugitive'
 " https://github.com/altercation/vim-colors-solarized.git
 Plugin 'altercation/vim-colors-solarized'
 
+" vim-markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,3 +53,5 @@ set expandtab
 syntax on
 
 colorscheme solarized
+
+let g:vim_markdown_folding_disabled=1
