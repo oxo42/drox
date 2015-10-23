@@ -44,7 +44,7 @@ git submodule update --recursive --init
 
 if(!(Folder-IsSetup("$HOME/.vim"))) {
     echo "Setting up .vim"
-
+    Make-DirectoryLink("$HOME/.vim", "$HOME/drox/vim")
 } else {
     echo ".vim all good"
 }
