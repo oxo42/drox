@@ -13,3 +13,6 @@
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim/bundle/vim-splunk"]
+	path = vim/bundle/vim-splunk
+	url = https://github.com/yorokobi/vim-splunk.git
