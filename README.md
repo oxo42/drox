@@ -1,7 +1,7 @@
 # drox
 Dot Repository for Ox
 
-# Install
+# Linux Install
 
 ## .bashrc
 
@@ -28,3 +28,12 @@ fi
 
 
 I do the install in my `.profile` because I want to push it out over puppet.  That way on my first login, my profile gets set up.
+
+
+# Windows Install
+
+Windows **WHAT**.  PowerShell huh? .gitconfig?  .vim?  Cats and dogs living together?  MADNESS I TELL YOU, MADNESS!!
+
+```PowerShell
+(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/oxo42/drox/master/Install-Drox.ps1") | iex
+```
