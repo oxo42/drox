@@ -1,3 +1,11 @@
+# Get the ID and security principal of the current user account
+$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+
+# Get the security principal for the Administrator role
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+
+
 function Folder-Exists($path)
 {
 	return Test-Path -PathType Container -Path $path
@@ -15,6 +23,17 @@ function Folder-IsSetup($path)
 }
 
 
+function Make-DirectoryLink($link, $target)
+{
+    $cmd = "cmd.exe /c mklink /d `"{0}`" `"{1}`" " -f $link $target
+
+    $newProc = New-Object System.Diagnostics.ProcessStartInfo "PowerShell"
+    $newProc.Arguments = $cmd
+    $newProc.Verb = "runas"
+    [System.Diagnostics.Process]::Start($newProc);
+}
+
+
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 
@@ -23,10 +42,11 @@ git pull --force
 echo "Check git submodule"
 git submodule update --recursive --init
 
-if(!(Folder-IsSetup("$HOME\.vim"))) {
-    echo mklink .vim
+if(!(Folder-IsSetup("$HOME/.vim"))) {
+    echo "Setting up .vim"
+
 } else {
-    echo .vim all good
+    echo ".vim all good"
 }
 
 echo "Finished at $(date)"
