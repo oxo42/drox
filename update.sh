@@ -1,6 +1,7 @@
 #!/bin/bash
 
 basedir=$(dirname $0)
+cd $basedir
 
 echo "Starting drox update at $(date)"
 git pull
