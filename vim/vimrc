@@ -52,6 +52,4 @@ set expandtab
 
 syntax on
 
-colorscheme solarized
-
 let g:vim_markdown_folding_disabled=1
