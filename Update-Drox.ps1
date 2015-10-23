@@ -1,5 +1,3 @@
-#!/bin/bash
-
 function Test-ReparsePoint([string]$path) {
     $file = Get-Item $path -Force -ea 0
     return [bool]($file.Attributes -band [IO.FileAttributes]::ReparsePoint)
