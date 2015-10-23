@@ -26,7 +26,7 @@ function Folder-IsSetup($path)
 function Make-DirectoryLink($link, $target)
 {
     $cmd = "cmd.exe /c mklink /d `"{0}`" `"{1}`" " -f $link,$target
-
+	
     $newProc = New-Object System.Diagnostics.ProcessStartInfo "PowerShell"
     $newProc.Arguments = $cmd
     $newProc.Verb = "runas"
@@ -40,11 +40,11 @@ Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 echo "Starting drox update at $(date)"
 git pull --force
 echo "Check git submodule"
-git submodule update --recursive --init
+#git submodule update --recursive --init
 
 if(!(Folder-IsSetup("$HOME/.vim"))) {
     echo "Setting up .vim"
-    Make-DirectoryLink("$HOME/.vim", "$HOME/drox/vim")
+    Make-DirectoryLink "$HOME\.vim" "$HOME\drox\vim"
 } else {
     echo ".vim all good"
 }
