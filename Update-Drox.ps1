@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function Test-ReparsePoint([string]$path) {
+    $file = Get-Item $path -Force -ea 0
+    return [bool]($file.Attributes -band [IO.FileAttributes]::ReparsePoint)
+}
+
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 
@@ -8,7 +13,10 @@ git pull --force
 echo "Check git submodule"
 git submodule update --recursive --init
 
-echo "Finished at $(date)"
+if(!(Test-ReparsePoint($HOME/.vim))) {
+    echo mklink .vim
+}
 
+echo "Finished at $(date)"
 
 Pop-Location
