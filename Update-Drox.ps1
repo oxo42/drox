@@ -23,7 +23,7 @@ git pull --force
 echo "Check git submodule"
 git submodule update --recursive --init
 
-if(!(Folder-IsSetup($HOME/.vim))) {
+if(!(Folder-IsSetup($HOME\.vim))) {
     echo mklink .vim
 } else {
     echo .vim all good
