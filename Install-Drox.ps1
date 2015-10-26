@@ -5,6 +5,10 @@
 
 Push-Location
 
+if($(Get-ExecutionPolicy) -eq "Restricted") {
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm
+}
+
 cd $HOME
 if(Test-Path drox) {
     cd drox

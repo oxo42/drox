@@ -19,3 +19,6 @@
 [submodule "vim/bundle/vim-ps1"]
 	path = vim/bundle/vim-ps1
 	url = https://github.com/PProvost/vim-ps1.git
+[submodule "ps1/posh-git"]
+	path = ps1/posh-git
+	url = https://github.com/dahlbyk/posh-git.git
