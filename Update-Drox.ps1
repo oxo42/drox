@@ -5,6 +5,21 @@ $myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWin
 # Get the security principal for the Administrator role
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
+# Adapted from http://www.west-wind.com/Weblog/posts/197245.aspx
+function Get-FileEncoding($Path) {
+    $bytes = [byte[]](Get-Content $Path -Encoding byte -ReadCount 4 -TotalCount 4)
+
+    if(!$bytes) { return 'utf8' }
+
+    switch -regex ('{0:x2}{1:x2}{2:x2}{3:x2}' -f $bytes[0],$bytes[1],$bytes[2],$bytes[3]) {
+        '^efbbbf'   { return 'utf8' }
+        '^2b2f76'   { return 'utf7' }
+        '^fffe'     { return 'unicode' }
+        '^feff'     { return 'bigendianunicode' }
+        '^0000feff' { return 'utf32' }
+        default     { return 'ascii' }
+    }
+}
 
 function File-Exists($file)
 {
@@ -48,26 +63,31 @@ function Make-FileLink($link, $target)
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 
-echo "Starting drox update at $(date)"
+Write-Host "Starting drox update at $(date)"
 git pull --force
-echo "Check git submodule"
+Write-Host "Check git submodule"
 #git submodule update --recursive --init
 
 if(!(Folder-IsSetup("$HOME/.vim"))) {
-    echo "Setting up .vim"
+    Write-Host "Setting up .vim"
     Make-DirectoryLink "$HOME\.vim" "$HOME\drox\vim"
     cp _vimrc $HOME/_vimrc
-} else {
-    echo ".vim all good"
 }
 
 if(!(File-IsSetup("$HOME/.gitconfig"))) {
-    echo "Setting up .gitconfig"
+    Write-Host "Setting up .gitconfig"
     Make-FileLink "$HOME\.gitconfig" "$HOME\drox\gitconfig"
-} else { 
-    echo ".gitconfig all good"
+}
+# Powershell setup
+$profileLine = ". $HOME\drox\ps1\Profile.ps1"
+if(!(Select-String -Path $PROFILE -Pattern $profileLine -Quiet -SimpleMatch)) {
+    Write-Host "Adding Drox to $PROFILE..."
+    @"
+# Load drox Profile
+$profileLine
+"@ | Out-File $PROFILE -Append -Encoding (Get-FileEncoding $PROFILE)
 }
 
-echo "Finished at $(date)"
+Write-Host "Finished at $(date)"
 
 Pop-Location
