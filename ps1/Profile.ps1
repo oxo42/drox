@@ -1,9 +1,10 @@
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
+$env:PSModulePath = $env:PSModulePath + ";$HOME\drox\ps1\Modules"
 
 # Load posh-git module from current directory
-Import-Module .\posh-git
-Import-Module .\Jump-Location\Jump.Location.psd1
+Import-Module posh-git
+Import-Module Jump.Location
 
 # If module is installed in a default location ($env:PSModulePath),
 # use this instead (see about_Modules for more information):
@@ -24,8 +25,19 @@ function global:prompt {
     return " $ "
 }
 
-#Remove-Item Alias:wget
-#Remove-Item Alias:curl
+Remove-Item Alias:wget
+Remove-Item Alias:curl
+
+if(Get-Module PSReadline) {
+    Import-Module PSReadLine
+
+    #Set-PSReadlineKeyHandler -Key Tab -Function Complete
+    Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
+    Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
+    Set-PSReadlineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
+    Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
+    Set-PSReadlineOption -BellStyle None
+}
 
 Pop-Location
 
