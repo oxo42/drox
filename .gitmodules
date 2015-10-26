@@ -16,3 +16,6 @@
 [submodule "vim/bundle/vim-splunk"]
 	path = vim/bundle/vim-splunk
 	url = https://github.com/yorokobi/vim-splunk.git
+[submodule "vim/bundle/vim-ps1"]
+	path = vim/bundle/vim-ps1
+	url = https://github.com/PProvost/vim-ps1.git

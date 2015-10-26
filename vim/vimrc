@@ -21,6 +21,7 @@ Plugin 'plasticboy/vim-markdown'
 
 " vim-splunk
 Plugin 'yorokobi/vim-splunk'
+Plugin 'PProvost/vim-ps1'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,3 +57,4 @@ set expandtab
 syntax on
 
 let g:vim_markdown_folding_disabled=1
+let g:ps1_nofold_blocks=1
