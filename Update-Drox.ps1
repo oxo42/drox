@@ -25,12 +25,9 @@ function Folder-IsSetup($path)
 
 function Make-DirectoryLink($link, $target)
 {
-    $cmd = "cmd.exe /c mklink /d `"{0}`" `"{1}`" " -f $link,$target
-	
-    $newProc = New-Object System.Diagnostics.ProcessStartInfo "PowerShell"
-    $newProc.Arguments = $cmd
-    $newProc.Verb = "runas"
-    [System.Diagnostics.Process]::Start($newProc);
+    $cmd = "/c mklink /d `"{0}`" `"{1}`" " -f $link,$target
+
+	Start-Process "cmd.exe" -Verb runas -ArgumentList $cmd
 }
 
 
