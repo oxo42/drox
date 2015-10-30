@@ -8,6 +8,11 @@ git pull
 echo "Check git submodule"
 git submodule update --recursive --init
 
+if [[ -d vim ]] ; then 
+    echo "Cleaning up old vim config"
+    rm -rf vim
+fi
+
 echo "Checking vim config"
 # Make ~/.vimrc source ~/.vim/vimrc
 if [[ -f ~/.vimrc && ! -L ~/.vimrc ]] ; then 
