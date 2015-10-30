@@ -50,3 +50,13 @@ if ! [[ -L ~/.gitconfig ]] ; then
     echo Symlinking .gitconfig
     ln -s ~/.drox/gitconfig ~/.gitconfig
 fi
+
+echo "Checking tmux config"
+# Symlink .tmux.conf
+if [[ -f ~/.tmux.conf && ! -L ~/.tmux.conf ]] ; then
+    mv ~/.tmux.conf ~/.tmux.conf.bak
+fi
+if ! [[ -L ~/.tmux.conf ]] ; then
+    echo Symlinking .tmux.conf
+    ln -s ~/.drox/tmux.conf ~/.tmux.conf
+fi
