@@ -40,6 +40,7 @@ set autoindent
 
 " size of a hard tabstop
 set tabstop=4
+set laststatus=2
 
 " size of an "indent"
 set shiftwidth=4
@@ -58,3 +59,4 @@ syntax on
 
 let g:vim_markdown_folding_disabled=1
 let g:ps1_nofold_blocks=1
+
