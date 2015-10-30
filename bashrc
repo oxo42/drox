@@ -26,3 +26,5 @@ install_thefuck() {
     fi
 }
 
+
+alias ls='ls --color=auto -F'
