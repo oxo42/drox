@@ -35,7 +35,7 @@ fi
 if [[ ! -d ~/.vim ]] ; then
     git clone https://github.com/oxo42/vimrc.git ~/.vim
     cd ~/.vim
-    git remote set-url origin git@github.com:oxo42/vimrc.git
+    git remote set-url --push origin git@github.com:oxo42/vimrc.git
     git submodule update --recursive --init
 fi
 
