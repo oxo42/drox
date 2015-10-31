@@ -1,14 +1,6 @@
 #!/bin/bash
 
 
-# This is because I used to have vim included in this repo with submodules 
-# but it now lives in it's own repo.  The git pull wouldn't clean out the 
-# submodules
-if [[ -d vim ]] ; then 
-    echo "Cleaning up old vim config"
-    rm -rf vim
-fi
-
 echo "Checking vim config"
 # Make ~/.vimrc source ~/.vim/vimrc
 if [[ -f ~/.vimrc && ! -L ~/.vimrc ]] ; then 
