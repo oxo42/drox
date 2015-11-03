@@ -20,24 +20,13 @@ if [[ ! -L ~/.vimrc ]] ; then
     ln -s ~/.drox/dot.vimrc ~/.vimrc
 fi
 
-# Make sure that ~/.vim is a git repo and fully up to date
-if [[ -L ~/.vim ]] ; then 
-	rm ~/.vim
+if [[ -d ~/.vim  && ! -L ~/.vim ]] ; then 
+    echo Backing up .vim
+    mv ~/.vim ~/.vim.bak  
 fi
-if [[ -d ~/.vim ]] ; then
-    cd ~/.vim
-    if [[ $(git status 2> /dev/null) ]] ; then 
-        git pull
-        git submodule update --recursive --init
-    else
-        mv ~/.vim ~/.vim.bak
-    fi
-fi
-if [[ ! -d ~/.vim ]] ; then
-    git clone https://github.com/oxo42/vimrc.git ~/.vim
-    cd ~/.vim
-    git remote set-url --push origin git@github.com:oxo42/vimrc.git
-    git submodule update --recursive --init
+if ! [[ -d ~/.vim && -L ~/.vim ]] ; then
+    echo Symlinking .vim
+    ln -s ~/.drox/vim ~/.vim
 fi
 
 echo "Checking git config"
