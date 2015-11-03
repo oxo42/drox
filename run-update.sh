@@ -60,3 +60,5 @@ if ! [[ -L ~/.tmux.conf ]] ; then
     echo Symlinking .tmux.conf
     ln -s ~/.drox/tmux.conf ~/.tmux.conf
 fi
+
+source ~/.drox/bashrc
