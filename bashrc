@@ -26,5 +26,6 @@ install_thefuck() {
     fi
 }
 
+eval $(dircolors ~/.drox/dircolors.solarized.ansi-dark)
 
 alias ls='ls --color=auto -F'
