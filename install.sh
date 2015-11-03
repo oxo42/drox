@@ -12,4 +12,4 @@ else
     cd ~/.drox
     git pull --force
 fi
-./update.sh
+~/.drox/update.sh
