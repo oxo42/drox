@@ -30,6 +30,8 @@ install_thefuck() {
 eval $(dircolors ~/.drox/dircolors.solarized.ansi-dark)
 
 alias ls='ls --color=auto -F'
+# Open multiple files in tabs
+alias vim='vim -p'
 
 if [ -f ~/.bashrc.local ] ; then 
     source ~/.bashrc.local
