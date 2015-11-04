@@ -41,5 +41,5 @@ function prompt_callback {
     if [ `jobs | wc -l` -ne 0 ]; then
         echo -n " jobs:\j"
     fi
-    gp_set_window_title $(hostname):$PWD
+    gp_set_window_title $(hostname):"${PWD/$HOME/\~}"
 }
