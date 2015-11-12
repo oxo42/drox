@@ -1,6 +1,6 @@
 # vim: set syntax=gitconfig:
-[core]
-	autocrlf = true
+# [core]
+# 	autocrlf = true
 [push]
     default = simple
 [color]
