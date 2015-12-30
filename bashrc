@@ -27,7 +27,9 @@ install_thefuck() {
     fi
 }
 
-eval $(dircolors)
+if hash dircolors 2> /dev/null ; then 
+    eval $(dircolors)
+fi
 
 alias ls='ls --color=auto -F'
 # Open multiple files in tabs
