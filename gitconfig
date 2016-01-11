@@ -107,3 +107,11 @@
 
 [format]
     pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[mergetool "kdiff3"]
+    cmd = kdiff3 $BASE $LOCAL $REMOTE -o $MERGED
+[difftool "kdiff3"]
+	cmd = kdiff3 $LOCAL $REMOTE
+[merge]
+	tool = kdiff3
+[diff]
+    tool = kdiff3
