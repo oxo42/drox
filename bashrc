@@ -5,6 +5,7 @@ export EDITOR=vim
 if [ -f ~/.drox/bash-git-prompt/gitprompt.sh ] ; then
     GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ \[\033[0;33m\]$(hostname -s):\w\[\033[0;0m\]"
     # GIT_PROMPT_THEME=Solarized
+    export PROMPT_COMMAND='setLastCommandState;printf "\033]0;%s:%s\007" "${HOSTNAME%%.*}" "${PWD##*/}";setGitPrompt'
     source ~/.drox/bash-git-prompt/gitprompt.sh
 fi
 
@@ -39,13 +40,13 @@ if [ -f ~/.bashrc.local ] ; then
     source ~/.bashrc.local
 fi
 
-function prompt_callback {
-
-    # Show jobs running if any
-    if [ `jobs | wc -l` -ne 0 ]; then
-        echo -n " jobs:\j"
-    fi
-
-    # Set the window title to host and current directory
-    gp_set_window_title $(hostname):"${PWD/$HOME/\~}"
-}
+# function prompt_callback {
+# 
+#     # Show jobs running if any
+#     if [ `jobs | wc -l` -ne 0 ]; then
+#         echo -n " jobs:\j"
+#     fi
+# 
+#     # Set the window title to host and current directory
+#     gp_set_window_title "${HOSTNAME%%.}:${PWD##*/}"
+# }
