@@ -40,13 +40,9 @@ if [ -f ~/.bashrc.local ] ; then
     source ~/.bashrc.local
 fi
 
-# function prompt_callback {
-# 
-#     # Show jobs running if any
-#     if [ `jobs | wc -l` -ne 0 ]; then
-#         echo -n " jobs:\j"
-#     fi
-# 
-#     # Set the window title to host and current directory
-#     gp_set_window_title "${HOSTNAME%%.}:${PWD##*/}"
-# }
+function prompt_callback {
+    # Show jobs running if any
+    if [ `jobs | wc -l` -ne 0 ]; then
+        echo -n " jobs:\j"
+    fi
+}
