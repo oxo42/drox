@@ -21,7 +21,7 @@ if hash git ; then
         # Start the update script silently in the background and send logs to /tmp/droxlog
         (cd ~/.drox && ./update.sh 2>&1 &) >> /tmp/droxlog
     else
-        (wget -q -O - https://raw.githubusercontent.com/oxo42/drox/master/install.sh | bash 2>&1 &) >> /tmp/droxlog
+        (curl https://raw.githubusercontent.com/oxo42/drox/master/install.sh | bash 2>&1 &) >> /tmp/droxlog
     fi
 fi
 ```
