@@ -33,8 +33,9 @@ if hash dircolors 2> /dev/null ; then
 fi
 
 alias ls='ls --color=auto -F'
-# Open multiple files in tabs
-alias vim='vim -p'
+alias d='ls -l | grep -E "^d"'
+alias ..='cd ..'
+alias vim='vim -p' # Open multiple files in tabs
 
 if [ -f ~/.bashrc.local ] ; then 
     source ~/.bashrc.local
