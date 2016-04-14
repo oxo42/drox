@@ -4,7 +4,15 @@ $env:PSModulePath = $env:PSModulePath + ";$HOME\drox\ps1\Modules"
 
 # Load posh-git module from current directory
 Import-Module posh-git
-Import-Module Jump.Location
+
+# This is because sometimes jumplocation.txt gets corrupted.  If it does, blow it away
+try {
+    Import-Module Jump.Location
+} catch {
+    Write-Host "In catch block"
+    Remove-Item $HOME\jump-location.txt*
+    Import-Module Jump.Location
+}
 
 # If module is installed in a default location ($env:PSModulePath),
 # use this instead (see about_Modules for more information):
