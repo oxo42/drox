@@ -3,6 +3,14 @@ Dot Repository for Ox
 
 # Linux Install
 
+## Standalone box
+
+i.e. not part of puppet or something
+
+```bash
+curl https://raw.githubusercontent.com/oxo42/drox/master/standaloneinstall.sh | bash
+```
+
 ## .bashrc
 
 ```bash
