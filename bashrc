@@ -2,12 +2,7 @@
 
 export EDITOR=vim
 
-if [ -f ~/.drox/bash-git-prompt/gitprompt.sh ] ; then
-    GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ \[\033[0;33m\]$(hostname -s):\w\[\033[0;0m\]"
-    # GIT_PROMPT_THEME=Solarized
-    export PROMPT_COMMAND='setLastCommandState;printf "\033]0;%s:%s\007" "${HOSTNAME%%.*}" "${PWD##*/}";setGitPrompt'
-    source ~/.drox/bash-git-prompt/gitprompt.sh
-fi
+source ~/.drox/prompt.sh
 
 if hash thefuck 2> /dev/null ; then
     eval "$(thefuck --alias)"
@@ -40,13 +35,6 @@ alias vim='vim -p' # Open multiple files in tabs
 if [ -f ~/.bashrc.local ] ; then 
     source ~/.bashrc.local
 fi
-
-function prompt_callback {
-    # Show jobs running if any
-    if [ `jobs | wc -l` -ne 0 ]; then
-        echo -n " jobs:\j"
-    fi
-}
 
 # Color man
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
