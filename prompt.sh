@@ -171,7 +171,7 @@ dvcs_function="
 
     # If we are in mercurial ...
     if [ -n \"\$_hg_dir\" ]; then
-        hgBranch=\`cat \"\$_hg_dir/.hg/branch\"\`
+        # hgBranch=\`cat \"\$_hg_dir/.hg/branch\"\`
 
         hgPrompt=\"s\"
         hgPrompt=\"\$hgPrompt{status|modified}\"
@@ -182,7 +182,11 @@ dvcs_function="
         hgPrompt=\"\$hgPrompt p\"
         hgPrompt=\"\$hgPrompt{patches|hide_unapplied|join(,)}\"
 
+        hgPrompt=\"\$hgPrompt {bookmark}\"
+
         promptOptions=(\`hg prompt \"\$hgPrompt\" | tr -s ':' ' '\`)
+
+        hgBranch=\${promptOptions[3]:-master}
 
         hgm=\${promptOptions[0]:1}
         if [ -n \"\$hgm\" ]; then
