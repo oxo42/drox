@@ -115,3 +115,6 @@
 	tool = kdiff3
 [diff]
     tool = kdiff3
+
+[include]
+    path = ~/.drox/gitconfig.local
