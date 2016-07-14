@@ -3,11 +3,6 @@
 export EDITOR=vim
 
 source ~/.drox/prompt.sh
-# hg_ps1() {
-#     hg prompt "{[+{incoming|count}]-->}{root|basename}{/{branch}}{-->[+{outgoing|count}]}{ at {bookmark}}{status}" 2> /dev/null
-# }
-# 
-# export PS1='$(hg_ps1)\n\u at \h in \w\n$ '
 
 if hash thefuck 2> /dev/null ; then
     eval "$(thefuck --alias)"
