@@ -1,20 +1,16 @@
 # example user config (see "hg help config" for more info)
+
 [ui]
-# name and email, e.g.
-# username = Jane Doe <jdoe@example.com>
 username = John Oxley <joxley@fb.com>
 
+
 [extensions]
-# uncomment these lines to enable some popular extensions
-# (see "hg help extensions" for more info)
-#
-# pager =
-# color =
 prompt = ~/local/hg-prompt/prompt.py
 
 
 [http_proxy]
 host = fwdproxy:8080
+
 
 [alias]
 oneline = log -T "{node|short} {author|user} {desc|firstline}\n"
