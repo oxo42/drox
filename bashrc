@@ -2,13 +2,6 @@
 
 export EDITOR=vim
 
-if [ -f ~/.drox/bash-git-prompt/gitprompt.sh ] ; then
-    GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ \[\033[0;33m\]$(hostname -s):\w\[\033[0;0m\]"
-    # GIT_PROMPT_THEME=Solarized
-    export PROMPT_COMMAND='setLastCommandState;printf "\033]0;%s:%s\007" "${HOSTNAME%%.*}" "${PWD##*/}";setGitPrompt'
-    source ~/.drox/bash-git-prompt/gitprompt.sh
-fi
-
 if hash thefuck 2> /dev/null ; then
     eval "$(thefuck --alias)"
 else
@@ -28,32 +21,41 @@ install_thefuck() {
     fi
 }
 
-if hash dircolors 2> /dev/null ; then 
+if hash dircolors 2> /dev/null ; then
     eval $(dircolors)
 fi
 
 alias ls='ls --color=auto -F'
 alias d='ls -l | grep -E "^d"'
 alias ..='cd ..'
-alias vim='vim -p' # Open multiple files in tabs
 
-if [ -f ~/.bashrc.local ] ; then 
-    source ~/.bashrc.local
-fi
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
 
-function prompt_callback {
-    # Show jobs running if any
-    if [ `jobs | wc -l` -ne 0 ]; then
-        echo -n " jobs:\j"
-    fi
-}
+source ~/.drox/fbprompt.sh
 
-# Color man
-export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
-export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode - bold, magenta
-export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode    
-export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode - yellow
-export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
-export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
+### History
 
+# Unlimited history
+export HISTFILESIZE=
+
+# Tell the history builtin command to display history with a timestamp
+export HISTTIMEFORMAT='%F %T  '
+
+# But only keep a certain number of lines in memory
+export HISTSIZE=10000
+
+# Don't clutter the file with trivial one and two character commands
+export HISTIGNORE="?:??:history*:"
+
+
+# Flush after each command -- guarantee that almost everything is kept
+export PROMPT_COMMAND="history -a"
+
+# Don't overwrite history
+shopt -s histappend
+
+# Don't clutter the file with consecutively repeated commands
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+
+# HISTIGNORE is a colon-delimited list of patterns which should be excluded.
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'

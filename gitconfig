@@ -19,7 +19,7 @@
 
 [user]
     name = John Oxley
-    email = john.oxley@gmail.com
+    email = joxley@fb.com
 
 [alias] 
     # add
@@ -115,3 +115,6 @@
 	tool = kdiff3
 [diff]
     tool = kdiff3
+
+[include]
+    path = ~/.gitconfig.local

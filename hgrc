@@ -1,0 +1,17 @@
+# example user config (see "hg help config" for more info)
+
+[ui]
+username = John Oxley <joxley@fb.com>
+
+
+[extensions]
+prompt = ~/local/hg-prompt/prompt.py
+
+
+[http_proxy]
+host = fwdproxy:8080
+
+
+[alias]
+oneline = log -T "{node|short} {author|user} {desc|firstline}\n"
+stc = status --change
