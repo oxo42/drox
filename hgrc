@@ -2,6 +2,7 @@
 
 [ui]
 username = John Oxley <joxley@fb.com>
+editor = /home/joxley/bin/wait-editor
 
 
 [extensions]
