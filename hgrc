@@ -2,7 +2,7 @@
 
 [ui]
 username = John Oxley <joxley@fb.com>
-editor = /home/joxley/bin/wait-editor
+editor = vim
 
 
 [extensions]
@@ -16,3 +16,6 @@ host = fwdproxy:8080
 [alias]
 oneline = log -T "{node|short} {author|user} {desc|firstline}\n"
 stc = status --change
+sup = rebase -s $1 -d .
+recommit = amend --rebase --edit
+feature = !hg bookmark -r master -t master $1 && hg co $1
