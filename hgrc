@@ -19,3 +19,9 @@ stc = status --change
 sup = rebase -s $1 -d .
 recommit = amend --rebase --edit
 feature = !hg bookmark -r master -t master $1 && hg co $1
+sst = sl -T '{syncstatus} {ssl}'
+phabdiff = diff --since-last-arc-diff
+
+[committemplate]
+testplan=dogcopter
+reviewers=#WDI
