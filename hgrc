@@ -22,6 +22,10 @@ feature = !hg bookmark -r master -t master $1 && hg co $1
 sst = sl -T '{syncstatus} {ssl}'
 phabdiff = diff --since-last-arc-diff
 
+[revsetalias]
+prev = .~1
+prev = .~-1
+
 [committemplate]
-testplan=dogcopter
+testplan=popeofnope
 reviewers=#WDI
