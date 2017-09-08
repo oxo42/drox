@@ -17,15 +17,31 @@ host = fwdproxy:8080
 oneline = log -T "{node|short} {author|user} {desc|firstline}\n"
 stc = status --change
 sup = rebase -s $1 -d .
+rem = rebase -s $1 -d master
 recommit = amend --rebase --edit
 feature = !hg bookmark -r master -t master $1 && hg co $1
 sst = sl -T '{syncstatus} {ssl}'
 phabdiff = diff --since-last-arc-diff
 
+pullovm=pull default -B hack/onevm
+pushovm=push default -r . --to hack/onevm
+pushovmforce=push default -r . --non-forward-move --to hack/onevm
+
+pullb=pull default -B $1
+pushb=push default -r . --to $1
+forcepushb=push default -r . --non-forward-move --to $1
+
+ls=sl
+
 [revsetalias]
 prev = .~1
-prev = .~-1
+next = .~-1
+parent = .^
+p = .^
 
 [committemplate]
 testplan=popeofnope
 reviewers=#WDI
+
+[smartlog]
+names=master fbsource/stable
