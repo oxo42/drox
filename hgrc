@@ -8,7 +8,6 @@ editor = vim
 [extensions]
 prompt = ~/local/hg-prompt/prompt.py
 
-
 [http_proxy]
 host = fwdproxy:8080
 
