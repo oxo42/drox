@@ -21,6 +21,7 @@ recommit = amend --rebase --edit
 feature = !hg bookmark -r master -t master $1 && hg co $1
 sst = sl -T '{syncstatus} {ssl}'
 phabdiff = diff --since-last-arc-diff
+d = !hg diff --git --color=always $@ | diff-so-fancy | less --tabs=4 -RF
 
 pullovm=pull default -B hack/onevm
 pushovm=push default -r . --to hack/onevm
