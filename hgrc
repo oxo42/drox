@@ -13,25 +13,23 @@ host = fwdproxy:8080
 
 
 [alias]
+a = amend --rebase
+d = !hg diff --git --color=always $@ | diff-so-fancy | less --tabs=4 -RF
 oneline = log -T "{node|short} {author|user} {desc|firstline}\n"
+phabdiff = diff --since-last-arc-diff
+recommit = amend --rebase --edit
+rem = rebase -s $1 -d master
+sst = sl -T '{syncstatus} {ssl}'
 stc = status --change
 sup = rebase -s $1 -d .
-rem = rebase -s $1 -d master
-recommit = amend --rebase --edit
-feature = !hg bookmark -r master -t master $1 && hg co $1
-sst = sl -T '{syncstatus} {ssl}'
-phabdiff = diff --since-last-arc-diff
-d = !hg diff --git --color=always $@ | diff-so-fancy | less --tabs=4 -RF
 
-pullovm=pull default -B hack/onevm
-pushovm=push default -r . --to hack/onevm
-pushovmforce=push default -r . --non-forward-move --to hack/onevm
+pullb=pull -B $1
+pushb=push -r . --to $1
+forcepushb=push -r . --non-forward-move --to $1
 
-pullb=pull default -B $1
-pushb=push default -r . --to $1
-forcepushb=push default -r . --non-forward-move --to $1
-
-ls=sl
+pullfog=pull -B hack/afog
+pushfog=push -r . --to hack/afog
+pushfogforce=push -r . --to hack/afog --non-forward-move
 
 [revsetalias]
 prev = .~1
