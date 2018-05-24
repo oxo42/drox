@@ -21,7 +21,7 @@
     name = John Oxley
     email = joxley@fb.com
 
-[alias] 
+[alias]
     # add
     a = add                           # add
     chunkyadd = add --patch           # stage commits chunk by chunk

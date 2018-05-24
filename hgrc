@@ -38,7 +38,7 @@ parent = .^
 p = .^
 
 [committemplate]
-testplan=popeofnope
+testplan=theplan
 reviewers=#WDI
 
 [smartlog]
